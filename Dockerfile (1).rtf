@@ -1,0 +1,28 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2708
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Use the official Node.js runtime as a parent image\
+FROM node:18-alpine\
+\
+# Set the working directory in the container to /app\
+WORKDIR /app\
+\
+# Copy the package.json and package-lock.json files to the container\
+COPY package*.json ./\
+\
+# Install the dependencies\
+RUN npm install\
+\
+# Copy the rest of the application files to the container\
+COPY . .\
+\
+# Expose port 3000 for the application\
+EXPOSE 3000\
+\
+# Start the application when the container starts\
+CMD [ "npm", "start" ]\
+}
